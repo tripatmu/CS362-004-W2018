@@ -78,7 +78,7 @@ int main(){
         //printf("Random Testing Run: %d\n", i);
         
         //Check Hand Count: Greater than or equal to +1
-        if(currHand+1 >= (state->handCount[currPlayer]))
+        if(currHand < (state->handCount[currPlayer]))
         {
             cError++;
         }
