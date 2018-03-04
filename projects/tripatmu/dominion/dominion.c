@@ -644,12 +644,14 @@ int getCost(int cardNumber)
 }
 
 //Function for Adventurer card
+//Bug Fixed!
 int adventurerCard(struct gameState *state, int currentPlayer, int temphand [], int drawntreasure, int z){
 
     int cardDrawn;
     
     //Bug: Changed <2 to <= 2
-    while(drawntreasure<=2){
+    //Bug: Changed back to <2
+    while(drawntreasure<2){
         
         if (state->deckCount[currentPlayer] <1){
             //if the deck is empty we need to shuffle discard and add to deck
@@ -685,11 +687,13 @@ int adventurerCard(struct gameState *state, int currentPlayer, int temphand [], 
 }
 
 //Function for Council Room card
+//Bug Not Found!
 int councilRoomCard(struct gameState *state, int currentPlayer, int handPos){
     
     int i = 0;
     //+4 Cards
     //Bug: Changed i=0 to i=1 and i++ to ++i
+    //Bug: No changes made, not found in testing
     for (i = 1; i < 4; ++i)
     {
         drawCard(currentPlayer, state);
@@ -716,11 +720,13 @@ int councilRoomCard(struct gameState *state, int currentPlayer, int handPos){
 }
 
 //Function for Smithy card
+//Bug Not relevant!
 int smithyCard(struct gameState *state, int currentPlayer, int handPos){
     
     int i = 0;
     //+3 Cards
     //Bug: Changed i++ to ++i
+    //Bug: Either i++ or ++i results in same operation
     for (i = 0; i < 3; ++i)
     {
         drawCard(currentPlayer, state);
@@ -733,6 +739,7 @@ int smithyCard(struct gameState *state, int currentPlayer, int handPos){
 }
 
 //Function for Village card
+//Bug Fixed!
 int villageCard(struct gameState *state, int currentPlayer, int handPos){
     
     
@@ -741,7 +748,8 @@ int villageCard(struct gameState *state, int currentPlayer, int handPos){
     
     //+2 Actions
     //Bug: changed state->numActions + 2 to state->numActions + currentPlayer
-    state->numActions = state->numActions + currentPlayer;
+    //Bug: Changed back to +2
+    state->numActions = state->numActions + 2;
     
     //discard played card from hand
     discardCard(handPos, currentPlayer, state, 0);
